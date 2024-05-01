@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/user/layout">
+
+
+<th:block layout:fragment="content">
+    <style>
+        .on {
+            background-color: #a3c9ec;
+        }
+    </style>
+    <form id="searchForm">
+        <input type="hidden" id="page" name="page" value="1"/>
+        <input type="hidden" id="size" name="size" value="8"/>
+        <input type="hidden" id="pageSize" name="pageSize" value="5"/>
+        <select name="searchType">
+            <option value="0">전체</option>
+            <option value="1">제목</option>
+            <option value="2">내용</option>
+        </select>
+        <input type="text" name="keyword">
+        <button type="button" onclick="findAll(1)">검색</button>
+    </form>
+    <table>
+        <thead>
+        <tr>
+            <th>제목</th>
+            <th>내용</th>
+            <th>아이디</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        <tr>
+        </tr>
+        </tbody>
+    </table>
+    <div class="paging">
+    </div>
+    <a href="/user/notice/write">글 작성하러 가기</a>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.onload = () => {
+            findAll();
+        }
+
+        async function findAll(page) {
+            changePageno(page)
+            const searchForm = new FormData(find('#searchForm'));
+            changeUrl(searchForm);
+            logFormData(searchForm)
+
+            const url = `/api/notice`;
+            const response = await fetchGet(url, searchForm);
+            drawList(response.content);
+            drawWebPage(response, 'findAll');
+
+        }
+
+        function drawList(response) {
+            const tbody = find('#tbody');
+            const html = getHtml(response);
+            tbody.innerHTML = html;
+        }
+
+        function getHtml(response) {
+            return response.map(item => `
+            <tr>
+                <td><a href="/user/notice/read?id=${item.noticeId}">${item.title}</a></td>
+                <td>${item.content}</td>
+                <td>${item.loginId}</td>
+            </tr>
+            `).join('');
+        }
+
+        /*]]>*/
+    </script>
+</th:block>
+</html>

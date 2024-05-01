@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ein.domain.todo.TodoMapper">
+    <insert id="save" parameterType="com.ein.domain.todo.TodoRequest">
+        INSERT INTO t_todo (member_id, title, content, use_yn, strg_dt, last_mdfcn_dt)
+        VALUES (#{memberId}, #{title}, #{content}, 1, NOW(), NOW())
+    </insert>
+
+    <select id="findAll" parameterType="com.ein.domain.todo.TodoSearch" resultType="com.ein.domain.todo.TodoResponse">
+        SELECT
+            m.member_id as memberId,
+            m.login_id as loginId,
+            t.todo_id as todoId,
+            t.title as title,
+            t.content as content
+        FROM t_todo t
+        LEFT JOIN t_member m ON m.member_id = t.member_id
+    </select>
+
+
+    <select id="findById" parameterType="java.lang.Long" resultType="com.ein.domain.todo.TodoResponse">
+        SELECT
+            m.member_id as memberId,
+            m.login_id as loginId,
+            t.todo_id as todoId,
+            t.title as title,
+            t.content as content
+        FROM t_todo t
+        LEFT JOIN t_member m ON m.member_id = t.member_id
+        WHERE t.todo_id = #{todoId}
+    </select>
+
+    <update id="update" parameterType="com.ein.domain.todo.TodoRequest">
+        UPDATE t_todo
+        SET title = #{title} , content = #{content} , last_mdfcn_dt = NOW()
+        WHERE todo_id = #{todoId}
+    </update>
+
+</mapper>

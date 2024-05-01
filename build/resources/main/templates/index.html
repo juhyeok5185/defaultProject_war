@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+</head>
+<body>
+
+<form id="loginForm" action="/api/login" method="post">
+    <input type="text" id="loginId" name="loginId" placeholder="아이디 입력"/>
+    <input type="password" id="password" name="password" placeholder="비밀번호 입력"/>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <button type="submit">로그인</button>
+</form>
+<button type="button" onclick="window.location.href = '/join'">회원가입</button>
+<script src="/static/common/js/fetchUtils.js" type="text/javascript"></script>
+</body>
+</html>

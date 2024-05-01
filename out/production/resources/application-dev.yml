@@ -1,0 +1,58 @@
+server:
+  port: 80
+
+  # exception properties
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
+
+spring:
+  # data source
+  datasource:
+    hikari:
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbc-url: jdbc:log4jdbc:mariadb://localhost:3306/defaultproject?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+      username: root
+      password: "2486"
+
+  # jpa properties
+  jpa:
+    database: mysql
+    database-platform: com.ein.common.config.CustomMariaDBDialect
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      open-in-view: false
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+
+        # setting static file refresh
+        devtools:
+          restart:
+            enabled: false
+          livereload:
+            enabled: true
+        thymeleaf:
+          cache: false
+
+
+  # setting static file location
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static/
+
+    # setting file upload max size
+    servlet:
+      multipart:
+        max-file-size: 10MB
+        max-request-size: 100MB
+
+# common file path
+file:
+#  default-upload-dir: C:/upload/
+  default-upload-dir: /Users/danny/Documents/upload/
+  default-excel-template-dir: C:/excel/templates/
+

@@ -1,0 +1,351 @@
+@charset "utf-8";
+
+.skip_info {
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    text-indent: 100%;
+}
+
+/* Sprite */
+.icons::before, .es, .sort_btn button::after,
+.paging .page_bt::after, .chkbox input:checked + i::before,
+.info_txt::before {
+    content: '';
+    background-image: url(../images/icons.png);
+    background-repeat: no-repeat;
+    background-size: 200px;
+}
+
+/* 로그인 ------------------------------- */
+#login_wrap * {
+    font-family: Pretendard, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    box-sizing: border-box;
+}
+
+#login_wrap {
+    background: #e8eef6;
+    width: 100%;
+    min-height: 100%;
+    padding: 15px;
+    overflow: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+#login_box {
+    width: 95%;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+#login_box h2 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #222;
+    position: relative;
+}
+
+#login_box h2 img {
+    max-height: 72px;
+}
+
+#login_box h2 i {
+    display: block;
+    font-size: 10px;
+    color: #777;
+    font-weight: 300;
+}
+
+#login_box h2 + p {
+    font-size: 36px;
+    line-height: 1;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif, Dotum;
+    font-weight: bold;
+}
+
+#login_box h2 + p i {
+    color: #3966de;
+    font-weight: bold;
+}
+
+#login_box h2 + p > span {
+    display: block;
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+}
+
+#login_box .login_con {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    padding: 3rem 50px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+#login_box .login_input {
+    margin: 30px 0 0 0;
+}
+
+#login_box .login_input ul li + li {
+    margin-top: 10px;
+}
+
+#login_box .login_input ul li > span {
+    display: block;
+    position: relative;
+}
+
+#login_box .login_input ul li label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.563rem;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 9px;
+    text-indent: -9999px;
+}
+
+#login_box .login_input ul li label::after {
+    content: '';
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+}
+
+#login_box .login_input ul li .input_id label::after {
+    background-image: url(../images/icon_login_id.png);
+    width: 20px;
+    height: 20px;
+}
+
+#login_box .login_input ul li .input_pw label::after {
+    background-image: url(../images/icon_login_pw.png);
+    width: 17px;
+    height: 24px;
+}
+
+#login_box .login_input ul li input {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 0;
+    font-size: 1rem;
+    padding: 0px 20px 0 4.063rem;
+    width: 100%;
+    height: 52px;
+}
+
+#login_box .login_btn {
+    display: block;
+    background: #15244f;
+    border: 0;
+    border-bottom: solid 3px #22345e;
+    border-radius: 10px;
+    width: 100%;
+    height: 54px;
+    line-height: 54px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    margin: 20px 0 0;
+}
+
+.form_chk {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.form_chk input {
+    width: 17px;
+    height: 17px;
+    margin-right: 7px;
+}
+
+#login_box .login_input ul li input::-webkit-input-placeholder {
+    color: #999;
+}
+
+/* Webkit */
+#login_box .login_input ul li input:-moz-placeholder {
+    color: #999;
+}
+
+/* moz */
+#login_box .login_input ul li input:-ms-input-placeholder {
+    color: #999;
+}
+
+/* IE10+ */
+#login_wrap .copyright {
+    color: #888;
+    font-size: 13px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* header ------------------------------- */
+header {
+    background: #fff;
+    border-bottom: 1px solid #d4dadf;
+    width: 100%;
+    height: 57px;
+    position: fixed;
+    z-index: 2;
+}
+
+.top_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 10px;
+}
+
+.top_logo img {
+    max-width: 70px;
+}
+
+/* gnb */
+#gnb {
+    margin-top: 30px;
+}
+
+#gnb > li {
+    position: relative;
+}
+
+#gnb > li > a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 14px 30px;
+    position: relative;
+    z-index: 1;
+    transition: .2s;
+}
+
+#gnb > li > a i {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+#gnb > li > a.on {
+    background: #55a8fd;
+    color: #22345e;
+}
+
+#gnb > li > a::after {
+    background-position: 0 0;
+    width: 6px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin: -5px 0 0 0;
+}
+
+#gnb > li > a.on::after, #gnb > li > a:hover::after {
+    background-position: -8px 0;
+}
+
+#gnb > li > ul {
+    display: none;
+    background: #172850;
+    padding: 15px 30px 15px 60px;
+}
+
+#gnb > li > ul > li > a {
+    display: block;
+    color: #ccd2e0;
+    padding: 5px 0;
+    position: relative;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+}
+
+#gnb > li > ul > li > a.on, #gnb > li > ul > li > a.on:hover {
+    color: #55a8fd;
+}
+
+#gnb > li > ul > li > a:hover {
+    color: #55a8fd;
+}
+
+.user_func {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    margin: 0 30px;
+}
+
+.user_func .wrap {
+    display: flex;
+}
+
+.user_info {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.user_info strong {
+    margin-right: 5px;
+}
+
+.user_func .logout_btn {
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_func .logout_btn i {
+    font-size: 18px;
+}
+
+.user_func .logout_btn > span {
+    display: block;
+    height: 13px;
+    margin: 0 auto;
+    text-indent: -9999px;
+}
+
+
+.ml10 {
+    margin-left: 10px
+}
+
+.lh35 {
+    line-height: 35px
+}
+
+.radio-container2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.radio-container2 label {
+    margin-right: 20px;
+}

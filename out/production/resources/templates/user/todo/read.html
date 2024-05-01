@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/user/layout">
+
+<th:block layout:fragment="content">
+    <form id="updateForm">
+        <input type="text" name="title" placeholder="제목">
+        <input type="text" name="content" placeholder="내용">
+    </form>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.onload = () => {
+            findById();
+        }
+
+        async function findById() {
+            const id = getParamValue('id');
+            const url = `/api/todo/${id}`;
+            const response = await fetchGet(url);
+            drawList(response)
+        }
+
+        function drawList(response) {
+            const updateForm = find('#updateForm');
+            const loginId = getLoginId();
+            const isLogin = response.loginId === loginId;
+            const updateBtn = isLogin ? `<button type="button" onclick="updateBtn();">수정</button>` : ``;
+            const readonly = isLogin ? `` : `readonly`;
+
+            let html = `
+            <input type="text" name="title" placeholder="제목" value="${response.title}" ${readonly}>
+            <input type="text" name="content" placeholder="내용" value="${response.content}" ${readonly}>
+            ${updateBtn}
+            `;
+
+            updateForm.innerHTML = html;
+        }
+
+        async function updateBtn(){
+            const id = getParamValue('id');
+            const formData = new FormData(find('#updateForm'));
+            const url = `/api/todo/${id}`;
+            const response = await fetchPatch(url , formData);
+            alert('수정되었습니다.')
+            location.reload();
+        }
+
+        /*]]>*/
+    </script>
+</th:block>
+</html>
