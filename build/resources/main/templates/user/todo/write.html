@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/user/layout">
+
+<th:block layout:fragment="content">
+    <form id="saveForm">
+        <input type="text" name="title" placeholder="제목">
+        <input type="text" name="content" placeholder="내용">
+        <button type="button" onclick="save();">작성</button>
+    </form>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        async function save() {
+            const formData = new FormData(find('#saveForm'));
+            const url = `/api/todo`;
+            const response = await fetchPost(url , formData);
+            console.log(response)
+            alert('작성이 완료됐습니다.')
+            location.href = `/user/todo/list`;
+        }
+
+        /*]]>*/
+    </script>
+</th:block>
+</html>
