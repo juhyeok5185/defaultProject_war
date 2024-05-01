@@ -17,7 +17,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         try {
-            SpringApplication.run(ServletInitializer.class, args); // war 시작
+            SpringApplication.run(ServletInitializer.class, args); // war 시작 파일
         } catch (Exception e) {
             e.printStackTrace();
         }

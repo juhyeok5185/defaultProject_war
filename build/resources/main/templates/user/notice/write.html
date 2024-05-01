@@ -6,6 +6,11 @@
         <input type="text" name="title" placeholder="제목">
         <input type="text" name="content" placeholder="내용">
         <button type="button" onclick="save();">작성</button>
+
+        <input type="file" name="files">
+        <input type="file" name="files">
+        <input type="file" name="files">
+
     </form>
 </th:block>
 
@@ -15,8 +20,9 @@
 
         async function save() {
             const formData = new FormData(find('#saveForm'));
+            logFormData(formData)
             const url = `/api/notice`;
-            const response = await fetchPost(url , formData);
+            const response = await fetchPostFiles(url , formData);
             alert('작성이 완료됐습니다.')
             location.href = `/user/notice/list`;
         }

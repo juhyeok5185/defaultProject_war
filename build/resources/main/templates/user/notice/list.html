@@ -49,8 +49,6 @@
             changePageno(page)
             const searchForm = new FormData(find('#searchForm'));
             changeUrl(searchForm);
-            logFormData(searchForm)
-
             const url = `/api/notice`;
             const response = await fetchGet(url, searchForm);
             drawList(response.content);

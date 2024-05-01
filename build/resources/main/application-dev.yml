@@ -28,6 +28,15 @@ spring:
       hibernate:
         default_batch_fetch_size: 100
 
+        # setting static file refresh
+        devtools:
+          restart:
+            enabled: false
+          livereload:
+            enabled: true
+        thymeleaf:
+          cache: false
+
 
   # setting static file location
   mvc:
@@ -35,8 +44,15 @@ spring:
   resources:
     static-locations: classpath:/static/
 
+    # setting file upload max size
+    servlet:
+      multipart:
+        max-file-size: 10MB
+        max-request-size: 100MB
+
 # common file path
 file:
-  default-upload-dir: C:/upload/
+#  default-upload-dir: C:/upload/
+  default-upload-dir: /Users/danny/Documents/upload/
   default-excel-template-dir: C:/excel/templates/
 

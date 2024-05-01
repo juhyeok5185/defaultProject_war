@@ -78,6 +78,8 @@ async function fetchPost(url, params) {
  * @param formData FormData
  * @async
  * @example 복수 : List<MultipartFile> , 단수 : @RequestPart("file")(생략가능)
+ * @example java : @ModelAttribute(생략가능) final NoticeRequest request 같은 방식으로 파라미터
+ * @example java : DTO 에 생성자 있어야함
  */
 async function fetchPostFiles(url, formData) {
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
@@ -89,7 +91,7 @@ async function fetchPostFiles(url, formData) {
             headers: {
                 [csrfHeader]: csrfToken,
             },
-            body: formData,
+            body:formData
         });
 
         if (!response.ok) {
